@@ -1,0 +1,1 @@
+enum SubState { loading, success }
