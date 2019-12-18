@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_base_structure/pages/login/login_bloc.dart';
 import 'package:flutter_base_structure/pages/login/login_repository.dart';
 import 'package:flutter_base_structure/pages/login/widgets/login_form_widget.dart';
+import 'package:flutter_base_structure/shared/auth/auth_bloc.dart';
 import 'package:flutter_base_structure/shared/utils/sub_state.dart';
 
 class LoginPage extends StatefulWidget {
@@ -11,6 +14,24 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   var bloc = LoginBloc(LoginRepository());
+
+  StreamSubscription subscription;
+
+  @override
+  void initState() {
+    super.initState();
+    subscription = bloc.statusOut.listen((data){
+      if (data == SubState.success) {
+        AuthBloc.getInstance().login();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
