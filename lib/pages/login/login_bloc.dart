@@ -19,7 +19,9 @@ class LoginBloc {
     _statusIn.add(SubState.loading);
     try {
       var response = await repo.login({'username': username, 'password': password});
-      if (response) _statusIn.add(SubState.success);
+      if (response) {
+        _statusIn.add(SubState.success);
+      }
     } catch (e) {
       _status.addError(e);
     }

@@ -11,7 +11,7 @@ class HomeBloc {
     _contactsIn = _contacts.sink;
   }
 
-  // STREAMS
+  //?Streams
   var _contacts = BehaviorSubject<List<ContactModel>>();
   Observable<List<ContactModel>> contactsOut;
   Sink<List<ContactModel>> _contactsIn;
