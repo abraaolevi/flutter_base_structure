@@ -1,6 +1,7 @@
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:rxdart/rxdart.dart';
 
-class AuthBloc {
+class AuthBloc extends BlocBase {
 
   static AuthBloc _instance;
   static AuthBloc getInstance() {
@@ -30,9 +31,11 @@ class AuthBloc {
     _statusIn.add(false);
   }
 
+  @override
   void dispose() {
     _status.close();
     _statusIn.close();
     _instance = null;
+    super.dispose();
   }
 }
