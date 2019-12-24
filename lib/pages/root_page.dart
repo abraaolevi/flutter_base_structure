@@ -1,8 +1,8 @@
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_structure/pages/home/home_page.dart';
 import 'package:flutter_base_structure/pages/login/login_page.dart';
 import 'package:flutter_base_structure/shared/auth/auth_bloc.dart';
-import 'package:injector/injector.dart';
 
 class RootPage extends StatefulWidget {
   RootPage({Key key}): super(key: key);
@@ -16,8 +16,7 @@ class _RootPageState extends State<RootPage> {
 
   @override
   void initState() {
-    Injector.appInstance.registerSingleton((i) => AuthBloc());
-    bloc = Injector.appInstance.getDependency<AuthBloc>();
+    bloc = BlocProvider.getBloc<AuthBloc>();
 
     super.initState();
   }

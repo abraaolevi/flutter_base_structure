@@ -1,12 +1,12 @@
 import 'dart:async';
 
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_structure/pages/login/login_bloc.dart';
 import 'package:flutter_base_structure/pages/login/login_repository.dart';
 import 'package:flutter_base_structure/pages/login/widgets/login_form_widget.dart';
 import 'package:flutter_base_structure/shared/auth/auth_bloc.dart';
 import 'package:flutter_base_structure/shared/utils/sub_state.dart';
-import 'package:injector/injector.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
     super.initState();
     subscription = bloc.statusOut.listen((data){
       if (data == SubState.success) {
-        Injector.appInstance.getDependency<AuthBloc>().login();
+        BlocProvider.getBloc<AuthBloc>().login();
       }
     });
   }

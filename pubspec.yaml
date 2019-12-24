@@ -17,6 +17,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  bloc_pattern: ^2.5.1
   injector: ^1.0.8
   dio: ^3.0.7
   rxdart: ^0.22.6
