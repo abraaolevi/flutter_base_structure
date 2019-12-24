@@ -1,9 +1,10 @@
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter_base_structure/pages/home/home_repository.dart';
 import 'package:flutter_base_structure/shared/models/contact_model.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:rxdart/subjects.dart';
 
-class HomeBloc {
+class HomeBloc extends BlocBase {
   final HomeRepository repo;
 
   HomeBloc(this.repo) {
@@ -25,8 +26,10 @@ class HomeBloc {
     }
   }
 
+  @override
   void dispose() {
     _contacts.close();
     _contactsIn.close();
+    super.dispose();
   }
 }

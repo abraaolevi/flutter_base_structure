@@ -1,7 +1,7 @@
-import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_base_structure/pages/home/home_page.dart';
-import 'package:flutter_base_structure/pages/login/login_page.dart';
+import 'package:flutter_base_structure/main.dart';
+import 'package:flutter_base_structure/pages/home/home_module.dart';
+import 'package:flutter_base_structure/pages/login/login_module.dart';
 import 'package:flutter_base_structure/shared/auth/auth_bloc.dart';
 
 class RootPage extends StatefulWidget {
@@ -16,15 +16,9 @@ class _RootPageState extends State<RootPage> {
 
   @override
   void initState() {
-    bloc = BlocProvider.getBloc<AuthBloc>();
+    bloc = AppModule.to.getBloc<AuthBloc>();
 
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    bloc.dispose();
   }
 
   @override
@@ -32,7 +26,7 @@ class _RootPageState extends State<RootPage> {
     return StreamBuilder<bool>(
       stream: bloc.statusOut,
       initialData: false,
-      builder: (context, snapshot) => snapshot.data ? HomePage() : LoginPage(),
+      builder: (context, snapshot) => snapshot.data ? HomeModule() : LoginModule(),
     );
   }
 }

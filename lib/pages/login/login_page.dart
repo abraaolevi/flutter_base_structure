@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base_structure/main.dart';
 import 'package:flutter_base_structure/pages/login/login_bloc.dart';
-import 'package:flutter_base_structure/pages/login/login_repository.dart';
+import 'package:flutter_base_structure/pages/login/login_module.dart';
 import 'package:flutter_base_structure/pages/login/widgets/login_form_widget.dart';
 import 'package:flutter_base_structure/shared/auth/auth_bloc.dart';
 import 'package:flutter_base_structure/shared/utils/sub_state.dart';
@@ -14,7 +14,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  var bloc = LoginBloc(LoginRepository());
+  var bloc = LoginModule.to.getBloc<LoginBloc>();
 
   StreamSubscription subscription;
 
@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
     super.initState();
     subscription = bloc.statusOut.listen((data){
       if (data == SubState.success) {
-        BlocProvider.getBloc<AuthBloc>().login();
+        AppModule.to.getBloc<AuthBloc>().login();
       }
     });
   }

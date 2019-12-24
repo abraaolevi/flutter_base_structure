@@ -85,3 +85,4 @@ Sample of code using follow patterns (see `AuthBloc` usage):
 - [Singleton](https://github.com/abraaolevi/flutter_base_structure/tree/singleton)
 - [Injector](https://github.com/abraaolevi/flutter_base_structure/tree/injector)
 - [BlocProvider](https://github.com/abraaolevi/flutter_base_structure/tree/bloc_pattern), BLoC's inside _BlocProvider_ should extends from _BlocBase_ and must have override `dispose` method to dispose automatically when provide is closed.
+- [Modules](https://github.com/abraaolevi/flutter_base_structure/tree/modules), each page is considered a module. `AppModule` is responsable to matain all globall instances.

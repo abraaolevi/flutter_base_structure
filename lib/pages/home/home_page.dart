@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_structure/pages/home/home_bloc.dart';
+import 'package:flutter_base_structure/pages/home/home_module.dart';
 import 'package:flutter_base_structure/pages/home/home_repository.dart';
 import 'package:flutter_base_structure/pages/home/widgets/contact_tile/contact_tile_widget.dart';
 import 'package:flutter_base_structure/shared/models/contact_model.dart';
@@ -11,18 +12,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var bloc = HomeBloc(HomeRepository(CustomDio()));
+  var bloc = HomeModule.to.getBloc<HomeBloc>();
 
   @override
   void initState() {
     super.initState();
     bloc.getContacts();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    bloc.dispose();
   }
 
   @override

@@ -1,8 +1,9 @@
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter_base_structure/pages/login/login_repository.dart';
 import 'package:flutter_base_structure/shared/utils/sub_state.dart';
 import 'package:rxdart/rxdart.dart';
 
-class LoginBloc {
+class LoginBloc extends BlocBase {
   final LoginRepository repo;
 
   LoginBloc(this.repo) {
@@ -27,8 +28,10 @@ class LoginBloc {
     }
   }
 
+  @override
   void dispose() {
     _status.close();
     _statusIn.close();
+    super.dispose();
   }
 }

@@ -2,13 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base_structure/pages/login/login_model.dart';
 import 'package:flutter_base_structure/shared/utils/form_controller.dart';
 
-class LoginFormWidget extends StatelessWidget {
+class LoginFormWidget extends StatefulWidget {
 
   final Function(LoginModel data) onTap;
 
   LoginFormWidget({Key key, @required this.onTap}) : super(key: key);
 
+  @override
+  _LoginFormWidgetState createState() => _LoginFormWidgetState();
+}
+
+class _LoginFormWidgetState extends State<LoginFormWidget> {
   final FormController formController = FormController();
+
   LoginModel data = LoginModel();
 
   @override
@@ -43,7 +49,7 @@ class LoginFormWidget extends StatelessWidget {
                       child: Text('Entrar'),
                       onPressed: () {
                         if (formController.validade()) {
-                          onTap(data);
+                          widget.onTap(data);
                         }
                       },
                     ),
