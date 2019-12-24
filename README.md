@@ -77,3 +77,11 @@ lib
 ### shared
 
 No _shared_ deve conter todo código compartilhado na aplicação: _models_, Camadas de lógica, _services_, _utils_ etc. Ex: autenticação, usado em mais de uma _Page_ para verificar se o usuário está logado.
+
+## Patterns
+
+Sample of code using follow patterns (see `AuthBloc` usage):
+
+- [Singleton](https://github.com/abraaolevi/flutter_base_structure/tree/singleton)
+- [Injector](https://github.com/abraaolevi/flutter_base_structure/tree/injector)
+- [BlocProvider](https://github.com/abraaolevi/flutter_base_structure/tree/bloc_pattern), BLoC's inside _BlocProvider_ should extends from _BlocBase_ and must have override `dispose` method to dispose automatically when provide is closed.
